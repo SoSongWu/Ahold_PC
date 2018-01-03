@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>{$name} {$seo_title} {$site_name}</title>
+		<meta name="keywords" content="{$seo_keywords}" />
+		<meta name="description" content="{$seo_description}">
+		<tc_include file="Public:head" />
+	</head>
+   <style type="text/css">
+   	.span7,
+   	.span8{
+   		margin-left: 0;
+		margin-right: 0;
+   	}
+   </style>
+	<body>
+		<tc_include file="Public:nav" />
+		<div class="container tc-main">
+			<h2>{$name}</h2>
+			<div class="row">
+				<div class="list-baidu-span8">
+					<div class="span8">
+						<php>
+							$lists = sp_sql_posts_paged("cid:$cat_id;order:post_date DESC;",10);
+						</php>
+						<volist name="lists['posts']" id="vo">
+							<php>
+								$smeta=json_decode($vo['smeta'], true);
+							</php>
+							<div class="span8">
+								<h2 class="span8" style="font-size: 20px;">
+								<a href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a>
+							</h2>
+								<div class="span7">
+									{$vo.post_excerpt|msubstr=0,72}
+								</div>
+								<div class="span8">
+									<div class="list-actions">
+										<span> {:date('Y-m-d',strtotime($vo['post_date']))} </span>
+										<i class="fa fa-eye"></i><span>{$vo.post_hits}</span>
+										<i class="fa fa-thumbs-up"></i><span class="count">{$vo.post_like}</span>
+									</div>
+								</div>
+							</div>
+						</volist>
+					</div>
+				</div>
+
+				<div class="span3 pull-right">
+					<img src="__TMPL__Public/assets/images/oneindexpic/阿霍德商城.jpg" alt="皇家阿霍德" style="width:100%; margin-top: 5%;">
+					<h3 class="text-center">关注微信公众号<br>阿霍德商城</h3>
+				</div>
+
+				<div class="pagination">
+					<ul>{$lists['page']}</ul>
+				</div>
+			</div>
+
+		</div>
+		<tc_include file="Public:footer" />
+		<!-- JavaScript -->
+		<tc_include file="Public:scripts" />
+	</body>
+
+</html>

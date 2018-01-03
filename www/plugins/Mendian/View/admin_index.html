@@ -1,0 +1,66 @@
+<admintpl file="header"/>
+<style>
+/****表格样式1********/
+.table{width:100%;}
+.table,.table td{border:solid 1px #ccc;}
+.table th{border:solid 1px #ccc;}
+.table thead tr td{background: #eee;color:#333;}
+</style>
+<body class="J_scroll_fixed">
+<div class="wrap J_check_wrap">
+  <ul class="nav nav-tabs">
+     <li class="active"><a>门店加盟后台管理</a></li>
+  </ul>
+  <div class="common-form">
+  <div class="well">
+  	<span class="label label-success"></span>
+<span class="label label-info"></span>
+<span class="label label-warning"></span>	
+</div>
+
+<ul class="nav nav-tabs">
+			<li class="active"><a href="__APP__?g=api&m=plugin&a=execute&_plugin=Mendian&_controller=AdminIndex&_action=index">所有订单</a></li>
+			
+</ul>
+		
+    <form method="post" class="J_ajaxForm" action="#">
+      <div class="table_list">
+	  <div style="width:50px;height:30px;text-align:center; margin:0px 0;font-size: 17px;">
+	  {$page}{$list}
+
+	  </div>
+	
+	<table class="table">
+		<tr>
+			<th>ID</th>
+			<th>留言类型</th>
+			<th>留言时间</th>
+			<th>名字</th>
+			<th>手机号码</th>
+			<th>店名</th>
+			<th>补充</th>			
+		</tr>
+		<foreach name="Mendianpiao_Question" item="v">
+		<tr>
+			<td width="2%">{$v.id}</td>
+			<td width="5%">{$v.leixing}</td>
+			<td width="4%">{$v.shijian|date='Y-m-d H:i:s',###}</td>
+			<td width="3%">{$v.uname}</td>
+			<td width="3%">{$v.tel}</td>
+			<td width="4%">{$v.dianming}</td>
+			<td width="14%">{$v.msg}</td>			
+
+		</tr>
+		</foreach>
+
+	</table>
+	 
+		  
+  		</div>
+    </form>
+  </div>
+</div>
+	
+<script src="__ROOT__/statics/js/common.js?"></script>
+</body>
+</html>

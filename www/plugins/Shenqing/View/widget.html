@@ -1,0 +1,424 @@
+<style>
+	input,
+	button,
+	select,
+	textarea {
+		font-size: 21px;
+		line-height: 22px;
+	}
+	
+	label {
+		font-size: 23px;
+	}
+	
+	.uploaded_avatar_area img {
+		width: 30%;
+	}
+	
+	input {
+		width: 80%;
+	}
+	
+	.right,
+	.left {
+		margin-bottom: 3px;
+	}
+	
+	ul,
+	li {
+		list-style-type: none;
+	}
+	
+	i {
+		color: red;
+	}
+</style>
+
+<form style="width: 100%;" class="" id="" method="post" role="form" action="__APP__?g=api&m=plugin&a=execute&_plugin=Shenqing&_controller=Index&_action=sqgouzi">
+	<input type="hidden" name="biaoqian" value="{$_GET['id']}" />
+	<ul>
+		<li>
+			<div class="left">
+				商户名称：
+			</div>
+			<div class="right">
+				<input type="text" class="form-control" placeholder="例如：美宜士多店" name="sqmigncheng"><i>*</i>
+			</div>
+		</li>
+		<li>
+			<div class="left">
+				地址：
+			</div>
+			<div class="right">
+				<input type="text" class="form-control" placeholder="例如：佛山禅城季华二路智慧新城t6-19楼" name="sqdizhi"><i>*</i>
+			</div>
+		</li>
+		<li>
+			<div class="left">
+				店主姓名：
+			</div>
+			<div class="right">
+				<input type="text" class="form-control" placeholder="例如：张三" name="sqxingming"><i>*</i>
+			</div>
+		</li>
+		<li>
+			<div class="left">
+				联系电话：
+			</div>
+			<div class="right">
+				<input type="text" class="form-control" placeholder="例如：13088888888" name="sqdianhua"><i>*</i>
+			</div>
+		</li>
+		<li>
+			<div class="left">
+				商户ID：
+			</div>
+			<div class="right">
+				<input type="text" class="form-control" placeholder="请查看“阿霍德商家-会员-商户的ID”" name="sqid"><i>*</i>
+			</div>
+		</li>
+		<li>
+			<div class="left">
+				商户昵称：
+			</div>
+			<div class="right">
+				<input type="text" class="form-control" placeholder="请查看“阿霍德商家-会员-商户的昵称" name="sqnicheng">
+			</div>
+		</li>
+		<li>
+			<div class="left">
+				业务员姓名：
+			</div>
+			<div class="right">
+				<input type="text" class="form-control" placeholder="例如：李二" name="sqyewu"><i>*</i>
+			</div>
+		</li>
+		<li>
+			<div class="left">
+				商铺营业执照：</br>（*要求端正拍摄,文字清晰可见）<i>*</i>
+			</div>
+			<div class="right">
+				<label class="btn btn-success" style="margin-top: 0px;" for="zhizhao_uploder">上传执照图片</label>
+				<!--<input type="file" id="xFile" style="position:absolute;clip:rect(0 0 0 0);">-->
+				<input type="file" onchange="zhizhao_upload(this)" style="position:absolute;clip:rect(0 0 0 0); width: 0px;" id="zhizhao_uploder" name="file" />
+				<div class="uploaded_zhizhao_area">
+
+				</div>
+				<input name="sqzhizhao" class="form-control" id="sqzhizhao" type="hidden" value="" />
+			</div>
+		</li>
+		<li>
+			<div class="left">
+				身份证：</br>(*要求端正拍摄,内容清晰可见)<i>*</i>
+
+			</div>
+			<div class="right">
+				<label class="btn btn-success" style="margin-top: 0px;" for="zhengmian_uploder">上传身份证正面照片</label>
+				<input type="file" onchange="zhengmian_upload(this)" style="position:absolute;clip:rect(0 0 0 0); width: 0px;" id="zhengmian_uploder" name="file" />
+				<div class="uploaded_zhengmian_area">
+
+				</div>
+				<input name="sqsfzzheng" class="form-control" id="sqsfzzheng" type="hidden" value="" />
+			</div>
+
+		</li>
+		<li>
+			<div class="left">
+			</div>
+			<div class="right">
+				<label class="btn btn-success" style="margin-top: 0px;" for="fanmian_uploder">上传身份证反面照片</label>
+				<input type="file" onchange="fanmian_upload(this)" style="position:absolute;clip:rect(0 0 0 0); width: 0px;" id="fanmian_uploder" name="file" />
+				<div class="uploaded_fanmian_area">
+
+				</div>
+				<input name="sqsfzfan" class="form-control" id="sqsfzfan" type="hidden" value="" />
+			</div>
+
+		</li>
+		<li>
+			<div class="left">
+				商铺合照：</br>(*要求含业务员，商户，商品)<i>*</i>
+
+			</div>
+			<div class="right">
+				<label class="btn btn-success" style="margin-top: 0px;" for="shangpu_uploder">上传商铺照片</label>
+				<input type="file" onchange="shangpu_upload(this)" style="position:absolute;clip:rect(0 0 0 0); width: 0px;" id="shangpu_uploder" name="file" />
+				<div class="uploaded_shangpu_area">
+
+				</div>
+				<input name="sqshangpu" class="form-control" id="sqshangpu" type="hidden" value="" />
+			</div>
+
+		</li>
+		<li style="color: red;">（加*号的为必填）</li>
+		<li>
+			<div type="submit" onclick="sqtijiao();" class="btn btn-success">提交</div>
+			<div type="submit" onclick="sqremove();" id="sqremove" class="btn btn-success">重置</div>
+		</li>
+	</ul>
+
+</form>
+
+<script type="text/javascript">
+	function sqremove() {
+		$("input").val("");
+		$(".uploaded_zhizhao_area").find("img").remove();
+		$(".uploaded_zhengmian_area").find("img").remove();
+		$(".uploaded_fanmian_area").find("img").remove();
+	}
+
+	function sqtijiao() {
+		var isok1 = false;
+		var isok2 = false;
+		var isok3 = false;
+		var isok4 = false;
+		var isok5 = false;
+		var isok6 = false;
+		var isok7 = false;
+		var isok8 = false;
+		var isok9 = false;
+
+		$("input[class='form-control']").each(function() {
+			if($(this).attr("name") == "sqmigncheng") {
+				if($(this).val() == "") {
+					alert("店主姓名未填写");
+					$(this).focus();
+					return false;
+				} else {
+					isok1 = true;
+				}
+
+			}
+			if($(this).attr("name") == "sqdizhi") {
+				if($(this).val() == "") {
+					alert("地址未填写");
+					$(this).focus();
+					return false;
+				} else {
+					isok2 = true;
+				}
+
+			}
+			if($(this).attr("name") == "sqdianhua") {
+				if($(this).val() == "") {
+					alert("联系电话未填写");
+					$(this).focus();
+					return false;
+				} else {
+					isok3 = true;
+				}
+
+			}
+			if($(this).attr("name") == "sqid") {
+				if($(this).val() == "") {
+					alert("商户ID未填写");
+					$(this).focus();
+					return false;
+				} else {
+					isok4 = true;
+				}
+
+			}
+			if($(this).attr("name") == "sqyewu") {
+				if($(this).val() == "") {
+					alert("业务员姓名未填写");
+					$(this).focus();
+					return false;
+				} else {
+					isok5 = true;
+				}
+
+			}
+			if($(this).attr("name") == "sqzhizhao") {
+				if($(this).val() == "") {
+					alert("营业执照未上传");
+					$(this).focus();
+					return false;
+				} else {
+					isok6 = true;
+				}
+
+			}
+			if($(this).attr("name") == "sqsfzzheng") {
+				if($(this).val() == "") {
+					alert("身份证正面未上传");
+					$(this).focus();
+					return false;
+				} else {
+					isok7 = true;
+				}
+
+			}
+			if($(this).attr("name") == "sqsfzfan") {
+				if($(this).val() == "") {
+					alert("身份证反面未上传");
+					$(this).focus();
+					return false;
+				} else {
+					isok8 = true;
+				}
+
+			}
+			if($(this).attr("name") == "sqshangpu") {
+				if($(this).val() == "") {
+					alert("商铺照片未上传");
+					$(this).focus();
+					return false;
+				} else {
+					isok9 = true;
+				}
+
+			}
+		})
+
+		if(isok1&&isok2&&isok3&&isok4&&isok5&&isok6&&isok7&&isok8&&isok9){
+           alert("chenggong");
+           $('form').submit();
+        }else{
+            return false;
+        }
+
+	}
+
+	function zhizhao_upload(obj) {
+		var $fileinput = $(obj);
+		Wind.css("jcrop");
+		Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+			$.ajaxFileUpload({
+				url: '__APP__?g=api&m=plugin&a=execute&_plugin=Shenqing&_controller=Index&_action=avatar_upload',
+				secureuri: false,
+				fileElementId: "zhizhao_uploder",
+				dataType: 'json',
+				data: {},
+				success: function(data, status) {
+
+					if(data.status == 1) {
+						//						$("#avatar_uploder").hide();//隐藏按钮
+						var $uploaded_area = $(".uploaded_zhizhao_area"); //定义图片显示div
+						$uploaded_area.find("img").remove(); //清空图片显示div内容
+						var src = "__UPLOAD__avatar/" + data.data.file; //定义图片地址
+						var $img = $("<img/>").attr("src", src); //定义img元素
+						$img.prependTo($uploaded_area); //将img显示在图片div里
+						$("#sqzhizhao").val(src); //为对应input赋值
+
+					} else {
+						noty({
+							text: data.info,
+							type: 'error',
+							layout: 'center'
+						});
+					}
+
+				},
+				error: function(data, status, e) {}
+			});
+		});
+		return false;
+	}
+
+	function zhengmian_upload(obj) {
+		var $fileinput = $(obj);
+		Wind.css("jcrop");
+		Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+			$.ajaxFileUpload({
+				url: '__APP__?g=api&m=plugin&a=execute&_plugin=Shenqing&_controller=Index&_action=avatar_upload',
+				secureuri: false,
+				fileElementId: "zhengmian_uploder",
+				dataType: 'json',
+				data: {},
+				success: function(data, status) {
+
+					if(data.status == 1) {
+						//						$("#avatar_uploder").hide();//隐藏按钮
+						var $uploaded_area = $(".uploaded_zhengmian_area"); //定义图片显示div
+						$uploaded_area.find("img").remove(); //清空图片显示div内容
+						var src = "__UPLOAD__avatar/" + data.data.file; //定义图片地址
+						var $img = $("<img/>").attr("src", src); //定义img元素
+						$img.prependTo($uploaded_area); //将img显示在图片div里
+						$("#sqsfzzheng").val(src); //为对应input赋值
+
+					} else {
+						noty({
+							text: data.info,
+							type: 'error',
+							layout: 'center'
+						});
+					}
+
+				},
+				error: function(data, status, e) {}
+			});
+		});
+		return false;
+	}
+
+	function fanmian_upload(obj) {
+		var $fileinput = $(obj);
+		Wind.css("jcrop");
+		Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+			$.ajaxFileUpload({
+				url: '__APP__?g=api&m=plugin&a=execute&_plugin=Shenqing&_controller=Index&_action=avatar_upload',
+				secureuri: false,
+				fileElementId: "fanmian_uploder",
+				dataType: 'json',
+				data: {},
+				success: function(data, status) {
+
+					if(data.status == 1) {
+						//						$("#avatar_uploder").hide();//隐藏按钮
+						var $uploaded_area = $(".uploaded_fanmian_area"); //定义图片显示div
+						$uploaded_area.find("img").remove(); //清空图片显示div内容
+						var src = "__UPLOAD__avatar/" + data.data.file; //定义图片地址
+						var $img = $("<img/>").attr("src", src); //定义img元素
+						$img.prependTo($uploaded_area); //将img显示在图片div里
+						$("#sqsfzfan").val(src); //为对应input赋值
+					} else {
+						noty({
+							text: data.info,
+							type: 'error',
+							layout: 'center'
+						});
+					}
+
+				},
+				error: function(data, status, e) {}
+			});
+		});
+		return false;
+	}
+
+	function shangpu_upload(obj) {
+		var $fileinput = $(obj);
+		Wind.css("jcrop");
+		Wind.use("ajaxfileupload", "jcrop", "noty", function() {
+			$.ajaxFileUpload({
+				url: '__APP__?g=api&m=plugin&a=execute&_plugin=Shenqing&_controller=Index&_action=avatar_upload',
+				secureuri: false,
+				fileElementId: "shangpu_uploder",
+				dataType: 'json',
+				data: {},
+				success: function(data, status) {
+
+					if(data.status == 1) {
+						//						$("#avatar_uploder").hide();//隐藏按钮
+						var $uploaded_area = $(".uploaded_shangpu_area"); //定义图片显示div
+						$uploaded_area.find("img").remove(); //清空图片显示div内容
+						var src = "__UPLOAD__avatar/" + data.data.file; //定义图片地址
+						var $img = $("<img/>").attr("src", src); //定义img元素
+						$img.prependTo($uploaded_area); //将img显示在图片div里
+						$("#sqshangpu").val(src); //为对应input赋值
+					} else {
+						noty({
+							text: data.info,
+							type: 'error',
+							layout: 'center'
+						});
+					}
+
+				},
+				error: function(data, status, e) {}
+			});
+		});
+		return false;
+	}
+</script>

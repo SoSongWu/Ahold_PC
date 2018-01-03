@@ -1,0 +1,68 @@
+<style>
+		input,
+	button,
+	select,
+	textarea {
+		font-size: 21px;
+		line-height: 22px;
+	}
+	
+	label {
+		font-size: 23px;
+		}
+	/*.form-inline{
+		width: 100%;
+	}*/
+	.form-group{
+		width: 32%;
+		float: left;
+		margin-bottom: 20px;
+	}
+	.form-liuyan-but{
+		margin: 0 45%;
+	}
+</style>
+
+<form class="form-inline biaodan2" id="form1" method="post" role="form" action="__APP__?g=api&m=plugin&a=execute&_plugin=Tou&_controller=Index&_action=dindan1">
+	<div class="form-liuyan-text">
+
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<input type="hidden" name="biaoqian" value="{$_GET['id']}" />
+			<input name="pingpai" type="hidden" value="皇家阿霍德推广" />
+			<input name="shijian" type="hidden" value="{$shijian}" />
+			<label class="control-label" for="uname">姓	名</label>
+			<input type="text" class="form-control" id="uname" class="uname" placeholder="请输入姓名" name="uname"><i>*</i>
+
+		</div>
+
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<label class="control-label" for="tel">手机号码</label>
+			<input type="text" class="form-control" id="tel" placeholder="请输入手机号" name="tel"><i>*</i>
+		</div>
+
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<label class="control-label" for="name">email</label>
+			<input type="text" class="form-control" id="" placeholder="请输入邮件地址" name="email">
+		</div>
+
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<label class="control-label" for="email">QQ号码</label>
+			<input type="text" class="form-control" id="email" placeholder="请输入qq号码" name="qq">
+		</div>
+
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<label class="control-label" for="city">联系地址</label>
+			<input type="text" class="form-control" id="city" placeholder="请输入地址" name="city">
+		</div>
+
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<label class="control-label" for="msg">微信</label>
+			<input type="text" class="form-control" id="msg" placeholder="微信" name="msg">
+			</div>
+
+	</div>
+	<div class="form-liuyan-but">
+		<button type="submit" class="btn btn btn-success gradient purple rnd8 anniu2">提交</button>
+	</div>
+
+</form>

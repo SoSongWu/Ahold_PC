@@ -1,0 +1,139 @@
+<br>
+<br>
+<br>
+<!-- Footer ================================================== -->
+<hr> {:hook('footer')}
+<div id="main_footer">
+
+	<!--Bottom-->
+	<section id="bottom" class="main">
+		<!--Container-->
+		<div class="container">
+
+			<!--row-fluids-->
+			<div class="row-fluid">
+
+				<!--Contact Form-->
+				<div class="span3">
+					<h4>地址</h4>
+					<ul class="unstyled address">
+						<li>
+							<i class="icon-home"></i><strong>地址:</strong> 佛山市禅城区智慧新城T6-803
+						</li>
+						<li>
+							<i class="icon-envelope"></i>
+							<strong>Email: </strong> aholdhk@aliyun.com
+						</li>
+						<li>
+							<i class="icon-globe"></i>
+							<strong>Website:</strong> www.aholdhk.com
+						</li>
+						<li>
+							<i class="icon-phone"></i>
+							<strong>Toll Free:</strong> 400-084-8003
+						</li>
+					</ul>
+				</div>
+				<!--End Contact Form-->
+
+				<!--Important Links-->
+				<div id="tweets" class="span3">
+					<h4 style="margin-left: 26px;">关于阿霍德</h4>
+					<div>
+						<?php
+									  	$filetpl="<a href='\$href' target='\$target'>\$label</a>";
+									  	$foldertpl="<a href='\$href' target='\$target'>\$label</a>";
+									  	echo sp_get_menu("main",$filetpl,$foldertpl);
+									?>
+					</div>
+				</div>
+				<!--Important Links-->
+
+				<!--Archives-->
+				<div id="archives" class="span3">
+					<h4>最新资讯</h4>
+					<div>
+
+						<ul class="arrow">
+							<php>
+								$hot_articles=sp_sql_posts("cid:$portal_hot_articles;field:post_title,post_excerpt,post_date,object_id,smeta,term_id;order:post_hits desc;limit:5;");
+							</php>
+							<foreach name="hot_articles" item="vo">
+								<li>
+									<a title="{$vo.post_title}" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}">{$vo.post_title|msubstr=0,13}</a>
+								</li>
+							</foreach>
+						</ul>
+					</div>
+				</div>
+				<!--End Archives-->
+
+				<div class="span3">
+					<h4>关注我们</h4>
+					<img id="erweima" src="__TMPL__Public/assets/images/oneindexpic/阿霍德商城.jpg" alt="皇家阿霍德" />
+					<h3>官方微信</h3>
+
+				</div>
+
+			</div>
+			<!--/row-fluid-->
+		</div>
+		<!--/container-->
+
+	</section>
+	<!--/bottom-->
+
+	<!--Footer-->
+	<footer id="footer">
+		<div class="container">
+			<div class="row-fluid">
+				<div class="span5 cp">
+					&copy; 2017 More Templates
+					<a href="http://www.aholdhk.com/" target="_blank" title="皇家阿霍德">皇家阿霍德</a> - Collect from
+					<a href="http://www.aholdhk.com/" title="阿霍德商城" target="_blank">皇家阿霍德</a>. All Rights Reserved.
+				</div>
+				<!--/Copyright-->
+
+				<div class="span6">
+					<ul class="social pull-right">
+						<li>
+							<a href="#"><i class="fa fa-weixin"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-weibo"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-qq"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-mobile-phone"></i></a>
+						</li>
+						<li>
+							<a href="#"><i class="fa fa-mail-forward"></i></a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+	</footer>
+	<!--/Footer-->
+</div>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<div id="backtotop">
+	<i class="fa fa-arrow-circle-up"></i>
+</div>
+{$site_tongji}

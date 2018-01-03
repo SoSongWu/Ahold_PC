@@ -1,0 +1,36 @@
+[ 2017-12-29T15:01:35+08:00 ] 123.126.113.109 /robots.txt
+ERR: 无法加载控制器:Robots
+
+[ 2017-12-29T15:50:35+08:00 ] 106.120.173.91 /robots.txt
+ERR: 无法加载控制器:Robots
+
+[ 2017-12-29T16:26:07+08:00 ] 66.249.79.29 /robots.txt
+ERR: 无法加载控制器:Robots
+
+[ 2017-12-29T16:35:12+08:00 ] 46.229.164.99 /robots.txt
+ERR: 无法加载控制器:Robots
+
+[ 2017-12-29T17:21:42+08:00 ] 123.125.71.79 /index.php/public_html/simplewind/Core/Library/Behavior/CheckLangBehavior.class.php
+ERR: 无法加载控制器:PublicHtml
+
+[ 2017-12-29T17:54:56+08:00 ] 220.181.108.108 /index.php/public_html/application/Portal/Common/function.php
+ERR: 无法加载控制器:PublicHtml
+
+[ 2017-12-29T19:01:35+08:00 ] 220.181.108.186 /index.php/public_html/application/Common/Lib/Taglib/TagLibHome.class.php
+ERR: 无法加载控制器:PublicHtml
+
+[ 2017-12-29T19:34:55+08:00 ] 220.181.108.151 /index.php/public_html/simplewind/Core/Library/Behavior/WriteHtmlCacheBehavior.class.php
+ERR: 无法加载控制器:PublicHtml
+
+[ 2017-12-29T20:08:16+08:00 ] 123.125.71.53 /index.php/public_html/simplewind/Core/Library/Think/App.class.php
+ERR: 无法加载控制器:PublicHtml
+
+[ 2017-12-29T20:39:06+08:00 ] 106.38.241.145 /robots.txt
+ERR: 无法加载控制器:Robots
+
+[ 2017-12-29T22:08:50+08:00 ] 106.38.241.157 /robots.txt
+ERR: 无法加载控制器:Robots
+
+[ 2017-12-29T22:12:11+08:00 ] 123.125.143.19 /index.php/&wd=&eqid=9d05463f000112b4000000065a44bd32
+ERR: 无法加载控制器:&wd=&eqid=9d05463f000112b4000000065a44bd32
+

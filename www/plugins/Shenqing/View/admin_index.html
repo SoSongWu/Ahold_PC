@@ -1,0 +1,100 @@
+<admintpl file="header" />
+<style>
+	/****表格样式1********/
+	
+	.table {
+		width: 100%;
+	}
+	
+	.table,
+	.table td {
+		border: solid 1px #ccc;
+	}
+	
+	.table th {
+		border: solid 1px #ccc;
+	}
+	
+	.table thead tr td {
+		background: #eee;
+		color: #333;
+	}
+</style>
+
+<body class="J_scroll_fixed">
+	<div class="wrap J_check_wrap">
+		<ul class="nav nav-tabs">
+			<li class="active">
+				<a>订单后台管理</a>
+			</li>
+		</ul>
+		<div class="common-form">
+			<div class="well">
+				<span class="label label-success"></span>
+				<span class="label label-info"></span>
+				<span class="label label-warning"></span>
+			</div>
+
+			<ul class="nav nav-tabs">
+				<li class="active">
+					<a href="__APP__?g=api&m=plugin&a=execute&_plugin=Shenqing&_controller=AdminIndex&_action=index">所有订单</a>
+				</li>
+
+			</ul>
+
+			<form method="post" class="J_ajaxForm" action="#">
+				<div class="table_list">
+					<div style="width:50px;height:30px;text-align:center; margin:0px 0;font-size: 17px;">
+						{$page}{$list}
+
+					</div>
+
+					<table class="table">
+						<tr>
+							<th>ID</th>
+							<th>店铺名称</th>
+							<th>地址</th>
+							<th>店主姓名</th>
+							<th>联系电话</th>
+							<th>商户ID</th>
+							<th>商户昵称</th>
+							<th>业务员姓名</th>
+							<th>营业执照</th>
+							<th>身份证正面</th>
+							<th>身份证反面</th>
+							<th>商家合照</th>
+						</tr>
+						<foreach name="Shenqingpiao_Question" item="v">
+							<tr>
+								<td width="1%">{$v.id}</td>
+								<td width="3%">{$v.sqmigncheng}</td>
+								<td width="3%">{$v.sqdizhi}</td>
+								<td width="3%">{$v.sqxingming}</td>
+								<td width="3%">{$v.sqdianhua}</td>
+								<td width="3%">{$v.sqid}</td>
+								<td width="3%">{$v.sqnicheng}</td>
+								<td width="3%">{$v.sqyewu}</td>
+								<td width="7%">
+									<img src="{$v.sqzhizhao}" id="thumb-preview" style="cursor: hand" />
+								</td>
+								<td width="7%">
+									<img src="{$v.sqsfzzheng}" id="thumb-preview" style="cursor: hand" />
+								</td>
+								<td width="7%">
+									<img src="{$v.sqsfzfan}" id="thumb-preview" style="cursor: hand" />
+								</td>
+								<td width="10%">
+									<img src="{$v.sqshangpu}" id="thumb-preview" style="cursor: hand" />
+								</td>
+							</tr>
+						</foreach>
+					</table>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<script src="__ROOT__/statics/js/common.js?"></script>
+</body>
+
+</html>

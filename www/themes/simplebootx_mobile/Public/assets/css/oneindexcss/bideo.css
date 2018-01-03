@@ -1,0 +1,109 @@
+
+#video_body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+#video_container {
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+#video_background_video {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+}
+
+#video_cover {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: url('../../../../../../themes/simplebootx/Public/assets/images/oneindexpic/video_cover.jpeg') no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+#video_controls {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+#video_play img {
+	width: 100px;
+}
+
+#video_pause img {
+	width: 90px;
+}
+
+#video_pause {
+	display: none;
+}
+
+@media (min-width: 768px) {
+	#video_controls {
+		display: none;
+	}
+}
+
+
+/* Demo page specific styles */
+
+#video_body {
+	text-align: center;
+	font-family: 'proxima-nova', Helvetica;
+}
+
+#video_container {
+	height: 100%;
+}
+
+#video_overlay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+#video_main_content {
+	z-index: 2;
+	position: relative;
+	display: inline-block;
+	/* Vertical center */
+	top: 90%;
+	transform: translateY(-50%);
+}
+
+#video_main_content h1 {
+	text-transform: uppercase;
+	font-weight: 600;
+	font-family: 'proxima-nova-condensed', Helvetica;
+	color: #fff;
+	font-size: 35px;
+}
+
+#video_main_content .video_sub_head {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 18px;
+}
+
+#video_main_content .video_info {
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 12px;
+	margin-top: 10px;
+}
+
+

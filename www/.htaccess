@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>
+
+ErrorDocument 404 /51php404.html
+rewritecond %{http_host} !www.aholdhk.com [nc]
+rewriterule ^(.*)$ http://www.aholdhk.com/$1 [r=301,l]

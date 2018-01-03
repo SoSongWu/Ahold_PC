@@ -1,0 +1,52 @@
+<style>
+	input,
+	button,
+	select,
+	textarea {
+		font-size: 21px;
+		line-height: 22px;
+	}
+	
+	label {
+		font-size: 23px;
+	}
+	
+	.form-group {
+		width: 32%;
+		float: left;
+	}
+	
+	.form-liuyan-but {
+		width: 100%;
+		height: 50px;
+		margin-top: 20px;
+		margin-left: 45%;
+	}
+</style>
+
+<form class="form-inline biaodan2" id="form1" method="post" role="form" action="__APP__?g=api&m=plugin&a=execute&_plugin=Mendian&_controller=Index&_action=mendian">
+	<div style="width: 100%;height: 50px;">
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<label class="control-label" for="dianming">店名</label>
+			<input type="text" class="form-control" id="dianming" placeholder="店名" name="dianming">
+		</div>
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<input type="hidden" name="biaoqian" value="{$_GET['id']}" />
+			<input name="leixing" type="hidden" value="门店加盟申请" />
+			<input name="shijian" type="hidden" value="{$shijian}" />
+			<label class="control-label" for="uname">姓	名</label>
+			<input type="text" class="form-control" id="uname" class="uname" placeholder="请输入姓名" name="uname"><i>*</i>
+
+		</div>
+
+		<div class="form-group col-xs-12 col-md-6 col-lg-6">
+			<label class="control-label" for="tel">手机号码</label>
+			<input type="text" class="form-control" id="tel" placeholder="请输入手机号" name="tel"><i>*</i>
+			<input name="msg" type="hidden" value="网站留言" />
+		</div>
+	</div>
+	<div class="form-liuyan-but">
+		   <button type="submit" class="btn btn btn-success gradient purple rnd8 anniu2" >提交</button>
+	</div>
+
+</form>

@@ -1,0 +1,39 @@
+{:hook('body_start')}
+<style type="text/css">
+
+	.navbar .nav>li>a {
+		padding: 5px 10px 5px;
+	}
+	
+</style>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="row">
+			<div class="span12" style="height: 50px;">
+				<div class="span3">
+					<img src="__TMPL__Public/assets/images/logo.png" />
+				</div>
+				<div class="span7" style="margin-left:0;">
+					<form method="post" class="form-inline" action="{:U('portal/search/index')}" style="width:700px; margin:7px 0 7px;">
+						<input type="text" class="" placeholder="Search" name="keyword" value="{:I('get.keyword')}" style="width: 550px;" />
+						<input type="submit" class="btn btn-info" value="Go" style="margin:0; width: 98px;" />
+					</form>
+				</div>
+			</div>
+			<div class="span12 list-menu" style="background-color:#DFDFDF ; height: 30px;padding: 0 100px;">
+				<?php
+				$effected_id="main-menu";
+			  	$filetpl="<a href='\$href' target='\$target'>\$label</a>";
+			  	$foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <b class='caret'></b></a>";
+			  	$ul_class="dropdown-menu" ;
+			  	$li_class="li-class" ;
+			  	$style="nav";
+			  	$showlevel=6;
+			  	$dropdown='dropdown';
+			  	echo sp_get_menu("main",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown);
+				?>
+			</div>
+		</div>
+
+	</div>
+</div>

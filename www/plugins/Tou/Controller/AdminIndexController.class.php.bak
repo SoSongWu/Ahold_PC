@@ -1,0 +1,182 @@
+<?php
+// +----------------------------------------------------------------------
+// | Author: Mirahmat<tech@dadil.cc>
+// | QQ: 739389072
+// | WEB: www.dadil.cc
+// +----------------------------------------------------------------------
+namespace plugins\Tou\Controller; //Demo插件英文名，改成你的插件英文就行了
+use Api\Controller\PluginController;//插件控制器基类
+
+class AdminIndexController extends PluginController{
+	
+	function _initialize(){
+		$adminid=sp_get_current_admin_id();//获取后台管理员id，可判断是否登录
+		if(!empty($adminid)){
+			$this->assign("adminid",$adminid);
+		}else{
+			//TODO no login
+		}
+	}
+	
+	function index(){
+		//Vendor('Page.Filter.Page');
+		include_once "Page.class.php";
+		$plugin_toupiao_model=M("fuman");//读取数据库
+
+		//$Toupiao_Question=$plugin_toupiao_model->limit(0,5)->select();
+		$Toupiao_Question=$plugin_toupiao_model->select();
+		
+
+		
+		/*$count=M('fuman')->count();//分页
+		$page=new Page($count,12);
+		$limit=$page->firstRow.','.$page->listRows;
+		$this->page=$page->show();*/
+		
+		$this->assign("Toupiao_Question",$Toupiao_Question);
+		$this->display(":admin_index");
+	}
+	
+	//统计
+	function tongji(){
+		
+	}
+	
+	
+	
+	/*-----------------------------------------------------------------------------------------------------*/
+	//问题操作
+	function add_q(){
+			if($_GET['id']){
+				$id = intval(I("get.id"));
+				$Toupiao_Question = M('toupiao_question');// 根据表单提交的POST数据创建数据对象
+				$Toupiao_Question ->create($_GET);
+				$result=$Toupiao_Question-> where("id=$id") ->select();
+				$this->assign("msg","修改投票");
+				$this->assign("TQ",$result);
+			}else{
+				$this->assign("msg","添加投票");
+			}
+			$this->display(':add_q');
+			
+	}
+	function add_q_form(){
+		
+		if (IS_POST){
+		
+			if($_POST['id']>0){
+				//修改数据
+					$id = intval(I("post.id"));
+					$Toupiao_Question = M('toupiao_question');// 根据表单提交的POST数据创建数据对象
+					//$Toupiao_Question ->create($_POST);
+				$result=$Toupiao_Question ->where("id=$id") ->save($_POST);
+					if ($result!==false){
+						$this->index();
+					} else {	
+								echo '发生错误';
+					}
+				
+			}else{
+				//添加数据				
+			$Toupiao_Question = M('toupiao_question');// 根据表单提交的POST数据创建数据对象
+			$Toupiao_Question ->create($_POST);
+			$result=$Toupiao_Question ->add();
+//				if ($this->toupiao_question_model->create()){
+//					$result=$this->toupiao_question_model->add();
+					if ($result!==false){
+						$this->index();
+					} else {	
+								echo '发生错误';
+					}
+			}
+			
+		}	
+	}
+	function dell_q(){
+		if(isset($_GET['id'])){
+			$id = intval(I("get.id"));
+			$Toupiao_Question = M('toupiao_question');// 根据表单提交的POST数据创建数据对象
+			$Toupiao_Question ->create($_GET);
+			$result=$Toupiao_Question -> where("id=$id")->delete();
+			if ($result!==false) {
+				$this->index();
+			} else {
+				$this->index();
+				echo "删除问题失败！";
+			}
+			
+			
+			
+			$Toupiao_Answer = M('toupiao_answer');// 根据表单提交的POST数据创建数据对象
+			$result=$Toupiao_Answer -> where("q_id=$id")->delete();
+			if ($result!==false) {
+				 $_GET['id']=0;
+				$qid = intval(I("get.q_id"));
+				$this->add_a($qid);
+			} else {
+				$this->index();
+				echo "删除答案失败！";
+			}
+			
+			
+		}
+	}
+	/*-----------------------------------------------------------------------------------------------------*/
+	//答案部分
+	function add_a($id){
+		if($_GET['id']){
+			$id=$_GET['id'];
+		}
+		if(isset($id)){
+				//获取问题
+				//$id = intval(I("get.id"));
+				$Toupiao_Question = M('toupiao_question');// 根据表单提交的POST数据创建数据对象
+				$Toupiao_Question ->create($_GET);
+				$TQ=$Toupiao_Question-> where("id=$id") ->select();
+				$this->assign("TQ",$TQ);
+				//获取答案
+
+				$Toupiao_Answer = M('toupiao_answer');// 根据表单提交的POST数据创建数据对象
+				$Toupiao_Answer ->create();
+				$TA=$Toupiao_Answer-> where("q_id=$id") ->select();
+				$this->assign("TA",$TA);
+				
+				$this->assign("msg","添加答案");
+				$this->display(':add_a');
+		}else{
+			$this->index();
+			echo "添加失败！";
+		}
+	}
+	
+	//添加答案
+	function add_a_form(){
+		//添加数据				
+			$Toupiao_Answer = M('toupiao_answer');// 根据表单提交的POST数据创建数据对象
+			$Toupiao_Answer ->create($_POST);
+			$result=$Toupiao_Answer ->add();
+					if ($result!==false){
+						$this->add_a($_POST['q_id']);
+					} else {	
+								echo '发生错误';
+					}
+	}
+	//删除答案
+	function dell_a(){
+		if(isset($_GET['id'])){
+			$id = intval(I("get.id"));
+			$Toupiao_Answer = M('toupiao_answer');// 根据表单提交的POST数据创建数据对象
+			$Toupiao_Answer ->create($_GET);
+			$result=$Toupiao_Answer -> where("id=$id")->delete();
+			if ($result!==false) {
+				 $_GET['id']=0;
+				$qid = intval(I("get.q_id"));
+				$this->add_a($qid);
+			} else {
+				$this->index();
+				echo "删除失败！";
+			}
+		}
+	}
+	
+}

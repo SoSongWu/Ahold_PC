@@ -1,0 +1,155 @@
+
+
+
+<style>
+input,button, select, textarea {
+    font-size: 21px;
+    line-height: 22px;
+	
+}
+label{
+font-size: 23px;
+}
+.form-inline .form-group {
+    display: inline-block;
+    margin-top: 1.5%;
+    vertical-align: middle;
+	font-size:14px;
+	
+}
+.anniu2 {
+     margin-left:45%;
+	font-size: 22px;
+	margin-bottom:15px;
+}
+.biaodan2{
+background-color:#DDDDDD ;
+box-shadow: 10px 10px 5px #888888;
+border-radius: 20px;
+}
+.form-control{
+font-size:14px;
+}
+</style>
+
+<form class="form-inline biaodan2" id="form1" method="post" role="form" action="__APP__?g=api&m=plugin&a=execute&_plugin=Tou&_controller=Index&_action=dindan1">
+   <div class="form-group col-xs-12 col-md-6 col-lg-6">
+   <input type="hidden" name="biaoqian" value="{$_GET['id']}" />
+       <input name="pingpai" type="hidden" value="福满仓中式快餐" />
+	   <input name="shijian" type="hidden" value="{$shijian}" />
+      <label class="control-label" for="uname">姓名</label>
+      <input type="text" class="form-control" id="uname" class="uname" placeholder="请输入姓名" name="uname">
+	  
+   </div>
+   
+      <div class="form-group col-xs-12 col-md-6 col-lg-6">
+      <label class="control-label" for="name">email</label>
+      <input type="text" class="form-control" id="" placeholder="请输入邮件地址" name="email">
+   </div>
+   
+    <div class="form-group col-xs-12 col-md-6 col-lg-6">
+      <label class="control-label" for="email">QQ号码</label>
+      <input type="text" class="form-control" id="email" placeholder="请输入qq号码" name="qq">
+   </div>
+
+    <div class="form-group col-xs-12 col-md-6 col-lg-6">
+      <label class="control-label" for="tel">手机号码</label>
+      <input type="text" class="form-control" id="tel" placeholder="请输入手机号码" name="tel">
+   </div>
+
+    <div class="form-group col-xs-12 col-md-6 col-lg-6">
+      <label class="control-label" for="city">联系地址</label>
+      <input type="text" class="form-control" id="city" placeholder="请输入地址" name="city">
+   </div>
+   
+
+   
+    <div class="form-group col-xs-12 col-md-6 col-lg-6">
+     <label class="control-label" for="msg">留言内容</label>
+    <textarea class="form-control" rows="4" id="msg" placeholder="留言内容" name="msg"></textarea>
+	</div>
+   
+   <button type="submit" class="btn btn btn-success gradient purple rnd8 anniu2" >提交</button>
+
+
+</form>
+
+
+	
+<!--<php>
+	$config=cookie('config');
+</php>
+<empty name="TA">
+<!--	没有数据表明没有投票-->
+<!--	<else/>
+<style>
+	{$config['textarea']}
+</style>
+<div class="well well-warning"  id="toupiao" style="display: inline-block;">
+<php>
+	//是否投票
+	$t= cookie('toupiao'.$_GET['id']);
+</php>
+<if condition="$t eq '0' ">
+<!--	已投票-->
+	
+<!--		<foreach name="TA" item="vv" key="k">
+			<h2>{$k+1}.{$TQ[$k]['titel']}</h2>
+
+			<foreach name="vv" item="v" key="kk">	
+				<div class="btn-group">
+  <button class="btn btn-info">{$v.content}</button>
+  <button class="btn btn-success">{$v.size}</button>
+</div>
+
+			</foreach>
+			<hr>
+		</foreach>
+	
+
+	<else/>
+	<!--未投票-->
+<!--	<form method="post" action="__APP__?g=api&m=plugin&a=execute&_plugin=Tou&_controller=Index&_action=toupiao">
+		<input type="hidden" name="biaoqian" value="{$_GET['id']}" />
+	<p>
+
+	
+		<foreach name="TA" item="vv" key="k">
+			<h2>{$k+1}.{$TQ[$k]['titel']}</h2>
+			<foreach name="vv" item="v" key="kk">
+				
+				<if condition="$config['radio'] eq 1 ">
+					<label class="checkbox radio" style="  float: left;  margin-right: 30px;">
+				<else/>
+					<label class="checkbox radio">
+				</if>
+					
+					<if condition="$TQ[$k]['ismany'] eq 0 ">
+						<input type="radio" name="id_{$TQ[$k]['id']}" value="{$v.id}" />
+						<else/>
+						<input type="checkbox" name="chenk_{$kk}" value="{$v.id}" />
+					</if>
+					{$v.content}
+					<if condition="$config['checkbox'] eq 0 ">
+						<span class="badge">{$v.size}</span>
+					</if>
+					
+
+					
+				  </label>	
+			</foreach>
+			<div style="clear: both;"></div>
+			<hr>
+		</foreach>
+		
+		       
+		
+	</p>
+	<center>
+	<input type="submit"  class="btn btn-success gradient purple rnd8" value=" 投票 " />	
+	</center>
+	</form>
+	</if>
+</div>
+
+</empty>-->

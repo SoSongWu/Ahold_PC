@@ -1,0 +1,68 @@
+@charset "utf-8";
+/* CSS Document */
+/* GLOBAL & RESET
+---------------------------------------------------------------------- */
+body,div,table,td,p,h1,h2,h3,h4,h5,em,span,a,fieldsetform,textarea,ul,li,dl,dt,dd,form{margin:0;padding:0;border:none;}
+body{color:#333;width:100%;font:12px Microsoft YaHei,Tahoma,Arial,SimSun,Tahoma,Arial,\5b8b\4f53,sans-serif;-webkit-text-size-adjust:none; background:#FFFFFF; min-width:1200px;}
+a{color:#333;text-decoration:none;}
+a img,img{border:none;}
+input,textarea,select{outline:none;resize:none;margin:0;padding:0}
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0px 1000px white inset;} 
+table{border-collapse: collapse; border:none}
+ul,li,ol,dl,dd,dt{list-style:none;}
+h2,h3,h4,h5,strong{font-weight:700;font-size:12px}
+em,i{font-style:normal}
+.clear,.blank10,.blank15,.blank20,.blank30,.blank25,.blank8{clear:both;height:0px;overflow:hidden;}
+.blank10{ height:10px;}.blank15{ height:15px;}.blank20{ height:20px;}.blank25{ height:25px;}.blank30{ height:30px;}
+.blank8{ height:8px;}
+.par20{ padding-right:20px;}
+.fl{float:left;display:inline}.fr{float:right;display:inline}.f14{font-size:14px}.tc{text-align:center; clear:both}
+.c267{color:#2676b5}a.c267:hover{text-decoration:underline}.red{color:#F00}.red2{color:#bc0225}.c333{color:#333}.orange{color:#ff7302}.green{color:#03BC06}.c459{color:#459BD5}
+*{word-break:break-all;word-wrap:break-word;}
+.header_wrap{ background:#FFF}
+.header{ width:1200px; margin:0 auto; height:66px; position:relative; }
+.logo{ width:277px; height:66px; float:left;  margin:0; background:url(../images/icon_logo.png) no-repeat}
+.header_link{ position:absolute; right:0px; top:22px;}
+.header_link li{ float:left; padding:0 17px; font-size:24px; border-left:#390102 1px solid; height:27px; line-height:27px ; color:#3b0303}
+.header_link li a{ color:#3b0303}
+.header_link li.tel{ border:none;}
+
+/*banner*/
+.banner_wrap{ background:#FFED99}
+.banner{ height:649px; width:1200px; margin:0 auto; position:relative; }
+.ios_download,.android_download{ width:296px; height:60px; display:block;  position:absolute; border-radius:6px;background:url(../images/android.png) no-repeat;}
+.ios_download{ left:732px; top:448px;background:url(../images/ios.png);}
+.android_download{left:732px; top:518px;}
+.code{ position: absolute; width:129px; height:129px; left:1040px; top:448px;}
+.code img{width:129px; height:129px;}
+.code_text{ font-size:18px; color:#3b0304; text-align:right; position:absolute; left:1037px; top:579px; line-height:21px; letter-spacing:1px;}
+.code_text b{ font-weight:normal; color:#ff0069}
+.footer{ background:#5D5656; text-align:center; height:66px; color:#d8d3d3; font-size:24px; background:#1B1E25; line-height:66px;}
+.footer a{ color:#ffdb4b; text-decoration:underline; margin:0 35px;}
+
+/*棣栭〉鍐呭*/
+.page_wrap{ background:#FFDA4B}
+.i_page1,.i_page2{ width:1200px; height:500px; position:relative; margin:0 auto; color:#6a3906; }
+.i_page1{ height:765px;}
+.abs{ position:absolute;}
+.i_page1_text1{ font-size:66px; left:287px; top:200px; line-height:66px; letter-spacing:11px;}
+.i_page1_text2{ font-size:45px; left:199px; top:307px; line-height:45px; letter-spacing:6px;}
+.phone1{ position:absolute; left:863px; top:96px; }
+.i_page2{ height:724px; }
+.i_page2_text1{ font-size:66px; left:654px; top:238px; line-height:66px; letter-spacing:11px;}
+.i_page2_text2{ font-size:45px; left:654px; top:345px; line-height:45px; letter-spacing:6px;}
+.phone2{ position:absolute; left:129px; top:-21px; }
+
+/*鍏充簬鎴戜滑*/
+.header_nei{ background:#FFED99}
+.page_nei{ width:1200px; margin:0 auto; height:1434px;  color:#3b0404; }
+.page_nei h1{ padding-top:80px; font-size:68px; line-height:100px; font-weight:normal; text-align:center; letter-spacing:2px; }
+.page_nei h1 img{ vertical-align:middle; margin-right:26px; position:relative; left:0px; top:-9px; *top:0px;}
+.page_nei h2{ font-size:36px; line-height:36px; font-weight:normal; padding:0 74px; margin-top:145px;}
+.t_list{ margin:45px 0 0 74px;}
+.t_list li{ font-size:24px; line-height:50px; padding-left:20px; background:url(../images/dot.gif) left center no-repeat;}
+.contact_us{ padding:0 20px;}
+.contact_us h3{ font-size:24px; line-height:24px; font-weight:normal; padding:0 74px; margin-top:60px;}
+.contact_us .t_list{ margin-top:10px; }
+.map{ position:absolute; left:45%; top:860px;}
+

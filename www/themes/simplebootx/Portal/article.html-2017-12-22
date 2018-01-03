@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>{$post_title} {$site_name} </title>
+		<meta name="keywords" content="{$post_keywords}" />
+		<meta name="description" content="{$post_excerpt}">
+		<tc_include file="Public:head" />
+		<style>
+			#article_content img {
+				height: auto !important
+			}
+			
+			#article_content {
+				word-wrap: break-word;
+			}
+			
+			.btn {
+				margin-top: 33px;
+			}
+			.span8,
+			.span7{
+				margin-left: 0;
+				margin-right: 0;
+			}
+			
+		</style>
+	</head>
+
+	<body class="">
+		<tc_include file="Public:nav" />
+		<div class="container tc-main">
+			<div class="row">
+				<div class="list-baidu-span8">
+					<div class="span8">
+						<div class="span7">
+							<div class="tc-box first-box article-box">
+								<h2>{$post_title}</h2>
+								<div class="article-infobox">
+									<span>{$post_date} by {$user_nicename|default=$user_login}</span>
+									<span>
+					    			<i class="fa fa-eye"></i><span>{$post_hits}</span>
+									</span>
+									<div class="bdsharebuttonbox pull-right">
+										<a href="#" class="bds_more" data-cmd="more"></a>
+										<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+										<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+										<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+										<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+										<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+									</div>
+								</div>
+								<hr>
+								<div id="article_content ">
+									{$post_content}
+								</div>
+								<if condition="!empty($post_source) ">
+									<div>
+										<b>注：本文转载自{$post_source}，转载目的在于传递更多信息，并不代表本网赞同其观点和对其真实性负责。如有侵权行为，请联系我们，我们会及时删除。</b>
+									</div>
+								</if>
+								<div>
+									<if condition="!empty($prev) ">
+										<a href="{:leuu( 'article/index',array( 'id'=>$prev['object_id'],'cid'=>$prev['term_id']))}" class="btn btn-primary pull-left">上一篇</a>
+									</if>
+									<if condition="!empty($next)">
+										<a href="{:leuu('article/index',array('id'=>$next['object_id'],'cid'=>$next['term_id']))}" class="btn btn-warning pull-right">下一篇</a>
+									</if>
+									<script type="text/javascript" src="__TMPL__Public/assets/js/qrcode.min.js"></script>
+									<div id="qrcode" style="width: 100px;margin:0 auto"></div>
+									<script type="text/javascript">
+										var qrcode = new QRCode(document.getElementById("qrcode"), {
+											width: 100,
+											height: 100
+										});
+
+										function makeCode() {
+											qrcode.makeCode("http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}");
+										}
+										makeCode();
+									</script>
+									<div class="clearfix"></div>
+								</div>
+
+								{:hook('comment',array( 'post_id'=>$article_id, 'post_table'=>'posts', 'post_title'=>$post_title ))}
+							</div>
+
+						</div>
+						<div class="span7" style="border-top: 1px solid #BFBFBF;"></div>
+						<div class="span7">
+							<div class="">
+								<h3 class="text-menu">
+							<i class="fa fa-bars"></i><span style="margin-left: 10px;">热门文章	</span>
+						</div>
+						<php>
+							$hot_articles=sp_sql_posts("cid:$portal_hot_articles;field:post_title,post_excerpt,post_date,object_id,smeta,term_id;order:post_hits desc;limit:5;");
+						</php>
+						<foreach name="hot_articles" item="vo">
+						<div class="text-list-hot-list">
+								<a title="{$vo.post_title}" href="{:leuu('article/index',array('id'=>$vo['object_id'],'cid'=>$vo['term_id']))}" class="text-list-hot-menu" href="#">
+									{$vo.post_title}
+								</a>
+								<span class="text-list-hot-date">
+									 {:date('Y-m-d',strtotime($vo['post_date']))} 
+								</span>
+						</div>
+						</foreach>
+					</div>
+					</div>
+				</div>
+				<div class="span3 pull-right">
+					<img src="__TMPL__Public/assets/images/oneindexpic/阿霍德商城.jpg" alt="皇家阿霍德" style="width:100%; margin-top: 5%;">
+					<h3 class="text-center">关注微信公众号<br>阿霍德商城</h3>
+							</div>
+						</div>
+
+					</div>
+					<tc_include file="Public:footer" />
+					<tc_include file="Public:scripts" />
+	</body>
+
+</html>

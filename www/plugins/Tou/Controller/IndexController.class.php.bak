@@ -1,0 +1,43 @@
+<?php
+
+namespace plugins\Tou\Controller; //Demo插件英文名，改成你的插件英文就行了
+use Api\Controller\PluginController;//插件控制器基类
+
+class IndexController extends PluginController{
+	
+
+	
+	function index(){
+		$this->display("index");
+	}
+	
+	function dindan1(){
+		       
+        if(!empty($_POST)){
+			
+	
+         $User = M("fuman"); // 实例化User对象
+             // 根据表单提交的POST数据创建数据对象
+         if($User->create()){
+           $result = $User->add(); // 写入数据到数据库 
+         if($result){
+          // 如果主键是自动增长型 成功后返回值就是最新插入的值
+          $insertId = $result;
+                    }
+             }
+		
+			header("refresh:3;url=Index/index?g=#toupiao");
+            print('订单提交成功<br>三秒后自动跳转到主页~~~');
+
+		}
+		  else{
+			 cookie('toupiao'.$_POST['biaoqian'],'true',86400); // 默认一天指定cookie保存时间
+			 $this->redirect("article/index?g=&id=".$_POST['biaoqian']."#toupiao","");
+		}
+		
+
+	}
+	
+
+
+}

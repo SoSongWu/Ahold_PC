@@ -1,0 +1,9 @@
+[ 2018-01-01T02:04:22+08:00 ] 66.249.79.31 /index.php?g=user&m=login&a=index&redirect=
+ERR: Template doesn't exist:themes/simplebootx_en-us/User/login.html
+
+[ 2018-01-01T08:54:21+08:00 ] 66.249.79.29 /index.php?g=user&m=login&a=index&redirect=
+ERR: Template doesn't exist:themes/simplebootx_en-us/User/login.html
+
+[ 2018-01-01T18:00:03+08:00 ] 66.249.79.1 /index.php?g=user&m=notification&a=getlastnotifications
+ERR: 无法加载控制器:Notification
+
